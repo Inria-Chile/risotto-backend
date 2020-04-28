@@ -19,6 +19,10 @@ def create_app():
     def health():
         return "OK", 200
 
+    from risotto.controllers import papers_controller
+
+    app.register_blueprint(papers_controller.bp)
+
     @app.cli.command()
     def createdb():
         db.create_all()
