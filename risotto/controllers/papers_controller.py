@@ -7,5 +7,6 @@ bp = Blueprint("papers", __name__, url_prefix="/papers")
 
 @bp.route("/", methods=("GET",))
 def get_papers():
-    papers = Paper.query.all()
-    return jsonify(papers)
+    papers = Paper.all()
+    response = {"status": "OK", "payload": papers.iloc[:10].to_dict(orient="records")}
+    return jsonify(response)

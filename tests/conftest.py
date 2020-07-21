@@ -3,7 +3,7 @@ import pytest
 from risotto import create_app
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="session")
 def app():
     app = create_app()
     return app

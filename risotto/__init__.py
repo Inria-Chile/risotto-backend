@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 import risotto.settings
+from risotto.artifacts import load_artifacts
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -14,6 +15,7 @@ def create_app():
 
     db.init_app(app)
     migrate.init_app(app, db)
+    load_artifacts(app)
 
     @app.route("/health")
     def health():
