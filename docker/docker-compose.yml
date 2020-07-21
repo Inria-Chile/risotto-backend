@@ -21,8 +21,10 @@ services:
 
   risotto-backend:
     container_name: risotto-backend-prod
-    environment:
-      - PORT=${BACKEND_PORT}
     build:
       context: ..
       dockerfile: docker/Dockerfile
+    environment:
+      - PORT=${BACKEND_PORT}
+    volumes:
+      - ../artifacts:/code/artifacts
