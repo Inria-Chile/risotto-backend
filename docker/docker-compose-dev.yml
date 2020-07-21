@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  risotto-backend:
+    container_name: risotto-backend-dev
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile-dev
+    ports:
+      - "5000:5000"
+    volumes:
+      - ..:/code
