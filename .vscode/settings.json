@@ -1,3 +1,8 @@
 {
-    "python.pythonPath": "venv-risotto-backend/bin/python3"
+    "python.pythonPath": "venv-risotto-backend/bin/python3",
+    "python.linting.pylintEnabled": false,
+    "python.linting.mypyEnabled": true,
+    "python.linting.enabled": true,
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
 }
