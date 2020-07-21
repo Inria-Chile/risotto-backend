@@ -9,7 +9,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # Flask environment variables
-ENV FLASK_APP=backend
+ENV FLASK_APP=risotto
 ENV FLASK_ENV=development
 EXPOSE 5000
 
