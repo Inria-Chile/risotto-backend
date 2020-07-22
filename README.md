@@ -28,3 +28,5 @@ The backend is built on Python using the following libraries:
 - Flask: https://flask.palletsprojects.com/en/1.1.x/
 - Flask-SQLAlchemy: https://flask-sqlalchemy.palletsprojects.com/en/2.x/
 - Flask-Migrate: https://flask-migrate.readthedocs.io/en/latest/
+
+Even though currently the database and migrations libraries aren't being used, they are ready to be integrated uncommenting a few lines in `risotto/__init__.py`.
