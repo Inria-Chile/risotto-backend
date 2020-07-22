@@ -22,8 +22,10 @@ def create_app():
         return "OK", 200
 
     from risotto.controllers import papers_controller
+    from risotto.controllers import topics_controller
 
     app.register_blueprint(papers_controller.bp)
+    app.register_blueprint(topics_controller.bp)
 
     @app.cli.command()
     def createdb():
