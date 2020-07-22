@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
@@ -12,6 +13,8 @@ from risotto.artifacts import load_artifacts
 def create_app():
     app = Flask(__name__)
     app.config.from_mapping(risotto.settings.freeze())
+
+    CORS(app)
 
     # db.init_app(app)
     # migrate.init_app(app, db)
