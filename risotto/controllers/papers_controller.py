@@ -37,7 +37,12 @@ def get_papers():
         page_param * items_per_page_param,
     )
     papers_page = filtered_df.iloc[start_idx:end_idx]
-    papers_serialized = papers_page.to_dict(orient="records")
+    papers_serialized = [
+        {"rank": idx + 1, **paper}
+        for paper, idx in zip(
+            papers_page.to_dict(orient="records"), range(start_idx, end_idx)
+        )
+    ]
 
     response = {
         "status": "OK",
