@@ -13,18 +13,16 @@ class Paper:
 
     @staticmethod
     def filter(
-        papers: pd.DataFrame,
-        topic: Optional[str],
-        subtopic: Optional[str],
-        search: Optional[str],
+        papers: pd.DataFrame, topic: str, subtopic: str, search: str,
     ) -> pd.DataFrame:
-        if topic is not None:
+        if len(topic) > 0:
             topic_mask = papers["topic"] == int(topic)
             papers = papers[topic_mask]
-        if subtopic is not None:
+        if len(subtopic) > 0:
+            subtopic = subtopic.split("-")[1]
             subtopic_mask = papers["subtopic"] == int(subtopic)
             papers = papers[subtopic_mask]
-        if search is not None and len(search) > 0:
+        if len(search) > 0:
             search_mask = (
                 (papers["title"] + papers["abstract"]).str.lower().str.contains(search)
             )

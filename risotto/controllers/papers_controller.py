@@ -12,14 +12,21 @@ def get_papers():
     # Query params
     page_param = int(request.args.get("page", "1"))
     items_per_page_param = int(request.args.get("items_per_page", "20"))
-    topic_param = request.args.get("topic")
-    subtopic_param = request.args.get("subtopic")
-    search_param = request.args.get("search")
+    topic_param = request.args.get("topic", "")
+    subtopic_param = request.args.get("subtopic", "")
+    search_param = request.args.get("search", "")
 
-    if topic_param is None and subtopic_param is not None:
+    if len(topic_param) == 0 and len(subtopic_param) > 0:
         response = {
             "status": "error",
             "msg": "Can't specify subtopic parameter if a topic parameter is not provided",
+        }
+        return jsonify(response), 400
+
+    if len(subtopic_param) > 0 and subtopic_param.split("-")[0] != topic_param:
+        response = {
+            "status": "error",
+            "msg": "Subtopic parameter doesn't belong to the specified topic parameter",
         }
         return jsonify(response), 400
 
