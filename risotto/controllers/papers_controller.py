@@ -41,10 +41,12 @@ def get_papers():
 
     response = {
         "status": "OK",
-        "payload": papers_serialized,
-        "num_results": num_papers,
-        "num_pages": num_pages,
-        "page": page_param,
+        "payload": {
+            "papers": papers_serialized,
+            "num_results": num_papers,
+            "num_pages": num_pages,
+            "page": page_param,
+        },
     }
 
     return jsonify(response)
