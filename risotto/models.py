@@ -31,6 +31,10 @@ class Paper:
             papers = papers[search_mask]
         return papers
 
+    @staticmethod
+    def sort(papers: pd.DataFrame, by: str, ascending: bool) -> pd.DataFrame:
+        return papers.sort_values(by=by, ascending=ascending)
+
 
 class Topic:
 

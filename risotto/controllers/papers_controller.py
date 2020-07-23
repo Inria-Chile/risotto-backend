@@ -28,15 +28,16 @@ def get_papers():
     filtered_df = Paper.filter(
         papers_df, topic=topic_param, subtopic=subtopic_param, search=search_param
     )
+    sorted_df = Paper.sort(filtered_df, by="pagerank", ascending=False)
 
     # Perform pagination
-    num_papers = len(filtered_df)
+    num_papers = len(sorted_df)
     num_pages = math.ceil(num_papers / items_per_page_param)
     start_idx, end_idx = (
         (page_param - 1) * items_per_page_param,
         page_param * items_per_page_param,
     )
-    papers_page = filtered_df.iloc[start_idx:end_idx]
+    papers_page = sorted_df.iloc[start_idx:end_idx]
     papers_serialized = [
         {"rank": idx + 1, **paper}
         for paper, idx in zip(
