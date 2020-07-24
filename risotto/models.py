@@ -24,7 +24,9 @@ class Paper:
             papers = papers[subtopic_mask]
         if len(search) > 0:
             search_mask = (
-                (papers["title"] + papers["abstract"]).str.lower().str.contains(search)
+                (papers["title"] + papers["abstract"])
+                .str.lower()
+                .str.contains(search, regex=False)
             )
             papers = papers[search_mask]
         return papers
