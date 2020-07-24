@@ -6,19 +6,14 @@ More information is available at RISOTTO's homepage: https://inria-chile.github.
 
 ## How to run locally
 
-We provide a dockerized local development environment.
-In order to launch it, run the following commands:
-
-```bash
-$ docker-compose -f docker/docker-compose-dev.yml up
-```
+In order to launch the local development environment, we suggest to use the [integration repository](https://github.com/Inria-Chile/risotto-integration).
 
 ## How to test
 
 The unit test suite is executed by the following command:
 
 ```bash
-$ docker-compose -f docker/docker-compose-dev.yml run --rm risotto-backend pytest
+$ docker-compose run --rm risotto-backend pytest
 ```
 
 ## Backend architecture
