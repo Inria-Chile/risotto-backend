@@ -5,8 +5,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Install other dependencies
 WORKDIR /code
 
-COPY . .
+COPY requirements.txt .
 RUN pip install -r requirements.txt
+
+COPY . .
 
 # Flask environment variables
 ENV FLASK_APP=risotto
